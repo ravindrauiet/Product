@@ -54,155 +54,155 @@ function Product() {
         }));
       };
       return (
-        <div className="container mx-auto mt-10">
-          <h2 className="text-2xl font-bold mb-5">Fill The Form</h2>
+        <div style={{ margin: 'auto', marginTop: '10px', width: '100%' }}>
+          <h2 style={{ fontSize: '1.5rem', fontWeight: 'bold', marginBottom: '1rem' }}>Fill The Form</h2>
 
-          <form onSubmit={handleSubmit} style={{background:'green', color:'white'}}>
+          <form onSubmit={handleSubmit} style={{ backgroundColor: 'lightgreen', color: 'black', padding: '20px', borderRadius: '5px' }}>
             <br/>
             <div style={{ padding:'5px' , margin:'10px'}}>
             {/* Input fields */}
-            <div className="mb-3">
-              <label className="block text-sm font-bold mb-1">Sl No. :- </label>
+            <div style={{ marginBottom: '1rem' }}>
+              <label style={{ fontSize: '1rem', fontWeight: 'bold', marginBottom: '0.5rem', display: 'block' }}>Sl No. :- </label>
               <input
-                className="form-input w-full"
+                style={{ width: '100%', padding: '0.5rem', fontSize: '1rem' }}
                 name="sl_no"
                 value={formData.sl_no}
                 onChange={handleChange}
               />
             </div>
     
-            <div className="mb-3">
-              <label className="block text-sm font-bold mb-1">Sales/Purchase :- </label>
+            <div style={{ marginBottom: '1rem' }}>
+              <label style={{ fontSize: '1rem', fontWeight: 'bold', marginBottom: '0.5rem', display: 'block' }}>Sales/Purchase :- </label>
               <input
-                className="form-input w-full"
+                style={{ width: '100%', padding: '0.5rem', fontSize: '1rem' }}
                 name="sales_purchase"
                 value={formData.sales_purchase}
                 onChange={handleChange}
               />
             </div>
     
-            <div className="mb-3">
-              <label className="block text-sm font-bold mb-1">Date :- </label>
+            <div style={{ marginBottom: '1rem' }}>
+              <label style={{ fontSize: '1rem', fontWeight: 'bold', marginBottom: '0.5rem', display: 'block' }}>Date :- </label>
               <input
-                className="form-input w-full"
+                style={{ width: '100%', padding: '0.5rem', fontSize: '1rem' }}
                 name="date"
                 value={formData.date}
                 onChange={handleChange}
               />
             </div>
     
-            <div className="mb-3">
-              <label className="block text-sm font-bold mb-1">Party Name :- </label>
+            <div style={{ marginBottom: '1rem' }}>
+              <label style={{ fontSize: '1rem', fontWeight: 'bold', marginBottom: '0.5rem', display: 'block' }}>Party Name :- </label>
               <input
-                className="form-input w-full"
+                style={{ width: '100%', padding: '0.5rem', fontSize: '1rem' }}
                 name="party_name"
                 value={formData.party_name}
                 onChange={handleChange}
               />
             </div>
     
-            <div className="mb-3">
-              <label className="block text-sm font-bold mb-1">Details :- </label>
+            <div style={{ marginBottom: '1rem' }}>
+              <label style={{ fontSize: '1rem', fontWeight: 'bold', marginBottom: '0.5rem', display: 'block' }}>Details :- </label>
               <input
-                className="form-input w-full"
+                style={{ width: '100%', padding: '0.5rem', fontSize: '1rem' }}
                 name="details"
                 value={formData.details}
                 onChange={handleChange}
               />
             </div>
     
-            <div className="mb-3">
-              <label className="block text-sm font-bold mb-1">Weight :- </label>
+            <div style={{ marginBottom: '1rem' }}>
+              <label style={{ fontSize: '1rem', fontWeight: 'bold', marginBottom: '0.5rem', display: 'block' }}>Weight :- </label>
               <input
-                className="form-input w-full"
+                style={{ width: '100%', padding: '0.5rem', fontSize: '1rem' }}
                 name="weight"
                 value={formData.weight}
                 onChange={handleChange}
               />
             </div>
     
-            <div className="mb-3">
-              <label className="block text-sm font-bold mb-1">Manpower :- </label>
+            <div style={{ marginBottom: '1rem' }}>
+              <label style={{ fontSize: '1rem', fontWeight: 'bold', marginBottom: '0.5rem', display: 'block' }}>Manpower :- </label>
               <input
-                className="form-input w-full"
+                style={{ width: '100%', padding: '0.5rem', fontSize: '1rem' }}
                 name="manpower"
                 value={formData.manpower}
                 onChange={handleChange}
               />
             </div>
     
-            <div className="mb-3">
-              <label className="block text-sm font-bold mb-1">Material :- </label>
+            <div style={{ marginBottom: '1rem' }}>
+              <label style={{ fontSize: '1rem', fontWeight: 'bold', marginBottom: '0.5rem', display: 'block' }}>Material :- </label>
               <input
-                className="form-input w-full"
+                style={{ width: '100%', padding: '0.5rem', fontSize: '1rem' }}
                 name="material"
                 value={formData.material}
                 onChange={handleChange}
               />
             </div>
     
-            <div className="mb-3">
-              <label className="block text-sm font-bold mb-1">Freight :- </label>
+            <div style={{ marginBottom: '1rem' }}>
+              <label style={{ fontSize: '1rem', fontWeight: 'bold', marginBottom: '0.5rem', display: 'block' }}>Freight :- </label>
               <input
-                className="form-input w-full"
+                style={{ width: '100%', padding: '0.5rem', fontSize: '1rem' }}
                 name="freight"
                 value={formData.freight}
                 onChange={handleChange}
               />
             </div>
     
-            <div className="mb-3">
-              <label className="block text-sm font-bold mb-1">Maintainance :- </label>
+            <div style={{ marginBottom: '1rem' }}>
+              <label style={{ fontSize: '1rem', fontWeight: 'bold', marginBottom: '0.5rem', display: 'block' }}>Maintainance :- </label>
               <input
-                className="form-input w-full"
+                style={{ width: '100%', padding: '0.5rem', fontSize: '1rem' }}
                 name="maintainance"
                 value={formData.maintainance}
                 onChange={handleChange}
               />
             </div>
     
-            <div className="mb-3">
-              <label className="block text-sm font-bold mb-1">Sales :- </label>
+            <div style={{ marginBottom: '1rem' }}>
+              <label style={{ fontSize: '1rem', fontWeight: 'bold', marginBottom: '0.5rem', display: 'block' }}>Sales :- </label>
               <input
-                className="form-input w-full"
+                style={{ width: '100%', padding: '0.5rem', fontSize: '1rem' }}
                 name="sales"
                 value={formData.sales}
                 onChange={handleChange}
               />
             </div>
     
-            <div className="mb-3">
-              <label className="block text-sm font-bold mb-1">Payment Received :- </label>
+            <div style={{ marginBottom: '1rem' }}>
+              <label style={{ fontSize: '1rem', fontWeight: 'bold', marginBottom: '0.5rem', display: 'block' }}>Payment Received :- </label>
               <input
-                className="form-input w-full"
+                style={{ width: '100%', padding: '0.5rem', fontSize: '1rem' }}
                 name="payment_received"
                 value={formData.payment_received}
                 onChange={handleChange}
               />
             </div>
     
-            <div className="mb-3">
-              <label className="block text-sm font-bold mb-1">Amount Paid :- </label>
+            <div style={{ marginBottom: '1rem' }}>
+              <label style={{ fontSize: '1rem', fontWeight: 'bold', marginBottom: '0.5rem', display: 'block' }}>Amount Paid :- </label>
               <input
-                className="form-input w-full"
+                style={{ width: '100%', padding: '0.5rem', fontSize: '1rem' }}
                 name="amount_paid"
                 value={formData.amount_paid}
                 onChange={handleChange}
               />
             </div>
     
-            <div className="mb-3">
-              <label className="block text-sm font-bold mb-1">Balance :- </label>
+            <div style={{ marginBottom: '1rem' }}>
+              <label style={{ fontSize: '1rem', fontWeight: 'bold', marginBottom: '0.5rem', display: 'block' }}>Balance :- </label>
               <input
-                className="form-input w-full"
+                style={{ width: '100%', padding: '0.5rem', fontSize: '1rem' }}
                 name="balance"
                 value={formData.balance}
                 onChange={handleChange}
               />
             </div>
     
-            <div className="mt-5">
-              <button className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600" type="submit">Submit</button>
+            <div style={{ marginTop: '1rem' }}>
+              <button style={{ backgroundColor: 'blue', color: 'white', padding: '0.5rem 1rem', borderRadius: '0.25rem', border: 'none', cursor: 'pointer' }} type="submit">Submit</button>
             </div>
 
             </div>
@@ -211,4 +211,4 @@ function Product() {
       );
 }
 
-export default Product
+export default Product;
