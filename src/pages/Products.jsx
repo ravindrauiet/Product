@@ -11,7 +11,7 @@ export function Products() {
     }
 
     function showForm(product) {
-        setContent(<ProductsForm product={product} showList={showList} />);
+        <ProductsForm product={product} showList={showList} />
     }
     return (
         <div className="container my-5">

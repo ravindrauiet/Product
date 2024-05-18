@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from "react";
+import { ProductsForm } from "./ProductsForm";
 
 export function ProductsList(props) {
     const [products, setProducts] = useState([]);
+    const [editedProduct, setEditedProduct] = useState(null);
+    const [showButton, setShowButton] = useState(false);
 
     function fetchProduct() {
         fetch("http://localhost:3000/products")
@@ -12,9 +15,11 @@ export function ProductsList(props) {
                 return response.json();
             })
             .then((data) => {
-                //console.log(data);
-                setProducts(data);
-            }).catch((error) => {
+                // Sort the products array by createdAt in descending order
+                const sortedProducts = data.sort((a, b) => b.sl_no - a.sl_no);
+                setProducts(sortedProducts);
+            })
+            .catch((error) => {
                 console.log('Error:' + error.message);
             });
     }
@@ -28,15 +33,34 @@ export function ProductsList(props) {
         .then((data)=>fetchProduct());
            
     }
+
+    function handleEdit(product) {
+        setEditedProduct(product);
+        setShowButton(true); 
+    }
+
+    function handleAdd() {
+        setEditedProduct(null);
+        setShowButton(false);  // Reset editedProduct to null to show the form for adding a new product
+    }
+
     return (
         <>
-            <h2 className="text-center mb-3">List of Product</h2>
-            <button onClick={() => props.showForm({})} type="button" className="btn btn-primary me-2">Create</button>
-            <button onClick={() => fetchProduct()} type="button" className="btn btn-outline-primary me-2">Refresh</button>
+           
+            {/* <button onClick={() => props.showForm({})} type="button" className="btn btn-primary me-2">Create</button> */}
+            <button onClick={() => window.location.reload()} type="button" className="btn btn-outline-primary me-2">Refresh</button>
+    
+            {/* Conditional rendering of ProductsForm */}
+            {editedProduct !== null ? (
+                <ProductsForm product={editedProduct} updateProductList={fetchProduct} handleAdd={handleAdd} showButton={showButton} />
+            ) : (
+                < ProductsForm product={products} updateProductList={fetchProduct} />
+            )}
 
-            <table className="table">
+            <h2 className="text-center mb-3 mt-3 ">List of Product</h2>
+            <table className="table table-bordered table-hover">
                 <thead>
-                    <tr>
+                    <tr className="">
                         <th>sl_no</th>
                         <th>sales_purchase</th>
                         <th>date</th>
@@ -57,6 +81,7 @@ export function ProductsList(props) {
 
                 <tbody>
                     {
+
                         products.map((product, index) => {
                             return (
                                 <tr key={index}>
@@ -75,7 +100,8 @@ export function ProductsList(props) {
                                     <td>{product.amount_paid}</td>
                                     <td>{product.balance}</td>
                                     <td style={{ width: "10px", whiteSpace: "nowrap" }}>
-                                        <button onClick={() => props.showForm(product)} className="btn btn-primary btn-sm me-2">Edit</button>
+                                        <button onClick={() => handleEdit(product)} className="btn btn-primary btn-sm me-2 ">Edit</button>
+                                        
                                         <button onClick={() => deleteProduct(product.id)} className="btn btn-danger btn-sm me-2">Delete</button>
                                     </td>
                                 </tr>
