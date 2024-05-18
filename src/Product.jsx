@@ -29,7 +29,7 @@ function Product() {
         // Create new product
         formData.createdAt = new Date().toISOString().slice(0, 10);
     
-        fetch("http://localhost:3000/products", {
+        fetch("./../../db.json/products", {
           method: 'POST',
           headers: {
             "content-type": "application/json",

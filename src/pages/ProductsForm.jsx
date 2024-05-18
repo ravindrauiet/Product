@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
 export function ProductsForm(props) {
     const [errorMessage, setErrorMessage] = useState("");
@@ -25,6 +25,7 @@ export function ProductsForm(props) {
         if (props.product.id) {
             //call update method from props
             fetch("/db.json" + props.product.id, {
+            fetch("./../../db.json/products/" + props.product.id, {
                 method: 'PATCH',
                 headers: {
                     "content-type": "application/json",
@@ -48,6 +49,7 @@ export function ProductsForm(props) {
             // Create new product
             formData.createdAt = new Date().toISOString().slice(0, 10);
             fetch("/db.json", {
+            fetch("./../../db.json/products", {
                 method: 'POST',
                 headers: {
                     "content-type": "application/json",
