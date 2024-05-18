@@ -8,7 +8,6 @@ export function ProductsList(props) {
 
     function fetchProduct() {
         fetch("/db.json")
-        fetch("./../../db.json")
             .then((response) => {
                 if (!response.ok) {
                     throw new Error("response.message");
@@ -28,8 +27,6 @@ export function ProductsList(props) {
 
     function deleteProduct(id) {
         fetch(`/db.json/${id}`, {
-    function deleteProduct(id){
-        fetch("./../../db.json/products/" + id, {
             method: 'DELETE',
         })
         .then((response) => {
