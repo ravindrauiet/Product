@@ -2,44 +2,6 @@ import React, { useEffect, useState } from "react";
 
 export function ProductsForm(props) {
     const [errorMessage, setErrorMessage] = useState("");
-    const [salesPurchaseSize, setSalesPurchaseSize] = useState("form-control");
-    const [dateSize, setDateSize] = useState("form-control");
-    const [partyNameSize, setPartyNameSize] = useState("form-control");
-
-    function handleFocus(field) {
-        switch (field) {
-            case "sales_purchase":
-                setSalesPurchaseSize("form-control-lg");
-                break;
-            case "date":
-                setDateSize("form-control-lg");
-                break;
-            case "party_name":
-                setPartyNameSize("form-control-lg");
-                break;
-            default:
-                break;
-        }
-    }
-
-    function handleBlur(field) {
-        switch (field) {
-            case "sl_no":
-                setSlNoSize("form-control");
-                break;
-            case "sales_purchase":
-                setSalesPurchaseSize("form-control");
-                break;
-            case "date":
-                setDateSize("form-control");
-                break;
-            case "party_name":
-                setPartyNameSize("form-control");
-                break;
-            default:
-                break;
-        }
-    }
 
     function handleSubmit(event) {
         event.preventDefault();
@@ -62,7 +24,7 @@ export function ProductsForm(props) {
 
         if (props.product.id) {
             //call update method from props
-            fetch("http://localhost:3000/products/" + props.product.id, {
+            fetch("/db.json" + props.product.id, {
                 method: 'PATCH',
                 headers: {
                     "content-type": "application/json",
@@ -85,7 +47,7 @@ export function ProductsForm(props) {
 
             // Create new product
             formData.createdAt = new Date().toISOString().slice(0, 10);
-            fetch("http://localhost:3000/products", {
+            fetch("/db.json", {
                 method: 'POST',
                 headers: {
                     "content-type": "application/json",
@@ -111,38 +73,39 @@ export function ProductsForm(props) {
             <form onSubmit={(event) => handleSubmit(event)}>
                 <table className="table m-2 table-bordered table-hover">
                     <thead>
-                        <tr className="">
-                            <th>sl_no</th>
-                            <th>sales_purchase</th>
-                            <th>date</th>
-                            <th>party_name</th>
-                            <th>details</th>
-                            <th>weight</th>
-                            <th>manpower</th>
-                            <th>material</th>
-                            <th>freight</th>
-                            <th>maintainance</th>
-                            <th>Sales</th>
-                            <th>payment_received</th>
-                            <th>amount_paid</th>
-                            <th>balance</th>
-                            <th>Action</th>
-                        </tr>
+                    <tr className="">
+                        <th>Sl_No</th>
+                        <th>Sales_Purchase</th>
+                        <th>Date</th>
+                        <th>Party_Name</th>
+                        <th>Details</th>
+                        <th>Weight</th>
+                        <th>manpower</th>
+                        <th>Material</th>
+                        <th>Freight</th>
+                        <th>Maintainance</th>
+                        <th>Sales</th>
+                        <th>Payment_Received</th>
+                        <th>Amount_paid</th>
+                        <th>Balance</th>
+                        <th>Action</th>
+                    </tr>
                     </thead>
 
                     <tbody>
                         <tr>
                             <td>
-                                <input className="form-control" name="sl_no" defaultValue={props.product.sl_no} onFocus={() => handleFocus("sl_no")} onBlur={() => handleBlur("sl_no")} />
+                                <input className="form-control" name="sl_no" defaultValue={props.product.sl_no} 
+                                />
                             </td>
                             <td>
-                                <input className="form-control" name="sales_purchase" defaultValue={props.product.sales_purchase} onFocus={() => handleFocus("sales_purchase")} onBlur={() => handleBlur("sales_purchase")} />
+                                <input className="form-control" name="sales_purchase" defaultValue={props.product.sales_purchase}  />
                             </td>
                             <td>
-                                <input className={dateSize} name="date" defaultValue={props.product.date} onFocus={() => handleFocus("date")} onBlur={() => handleBlur("date")} />
+                                <input className="form-control" name="date" defaultValue={props.product.date} />
                             </td>
                             <td>
-                                <input className={partyNameSize} name="party_name" defaultValue={props.product.party_name} onFocus={() => handleFocus("party_name")} onBlur={() => handleBlur("party_name")} />
+                                <input className="form-control" name="party_name" defaultValue={props.product.party_name} />
                             </td>
                             <td>
                                 <input className="form-control" name="details" defaultValue={props.product.details} />

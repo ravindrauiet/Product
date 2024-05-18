@@ -7,7 +7,7 @@ export function ProductsList(props) {
     const [showButton, setShowButton] = useState(false);
 
     function fetchProduct() {
-        fetch("http://localhost:3000/products")
+        fetch("/db.json")
             .then((response) => {
                 if (!response.ok) {
                     throw new Error("response.message");
@@ -16,7 +16,7 @@ export function ProductsList(props) {
             })
             .then((data) => {
                 // Sort the products array by createdAt in descending order
-                const sortedProducts = data.sort((a, b) => b.sl_no - a.sl_no);
+                const sortedProducts = data.products.sort((a, b) => b.sl_no - a.sl_no);
                 setProducts(sortedProducts);
             })
             .catch((error) => {
@@ -25,14 +25,22 @@ export function ProductsList(props) {
     }
     useEffect(() => fetchProduct(), []);
 
-    function deleteProduct(id){
-        fetch("http://localhost:3000/products/" + id, {
+    function deleteProduct(id) {
+        fetch(`/db.json/${id}`, {
             method: 'DELETE',
         })
-        .then((response) => response.json())
-        .then((data)=>fetchProduct());
-           
+        .then((response) => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            // If the response has a body, parse it as JSON, otherwise return an empty object or appropriate value
+            return response.text().then(text => text ? JSON.parse(text) : {});
+        })
+        .then((data) => fetchProduct())
+        .catch((error) => console.error('Error:', error));
     }
+
+   
 
     function handleEdit(product) {
         setEditedProduct(product);
@@ -52,29 +60,29 @@ export function ProductsList(props) {
     
             {/* Conditional rendering of ProductsForm */}
             {editedProduct !== null ? (
-                <ProductsForm product={editedProduct} updateProductList={fetchProduct} handleAdd={handleAdd} showButton={showButton} />
+                <ProductsForm products={products} product={editedProduct} updateProductList={fetchProduct} handleAdd={handleAdd} showButton={showButton} />
             ) : (
-                < ProductsForm product={products} updateProductList={fetchProduct} />
+                < ProductsForm products={products} product={products} updateProductList={fetchProduct} />
             )}
 
             <h2 className="text-center mb-3 mt-3 ">List of Product</h2>
             <table className="table table-bordered table-hover">
                 <thead>
                     <tr className="">
-                        <th>sl_no</th>
-                        <th>sales_purchase</th>
-                        <th>date</th>
-                        <th>party_name</th>
-                        <th>details</th>
-                        <th>weight</th>
+                        <th>Sl_No</th>
+                        <th>Sales_Purchase</th>
+                        <th>Date</th>
+                        <th>Party_Name</th>
+                        <th>Details</th>
+                        <th>Weight</th>
                         <th>manpower</th>
-                        <th>material</th>
-                        <th>freight</th>
-                        <th>maintainance</th>
+                        <th>Material</th>
+                        <th>Freight</th>
+                        <th>Maintainance</th>
                         <th>Sales</th>
-                        <th>payment_received</th>
-                        <th>amount_paid</th>
-                        <th>balance</th>
+                        <th>Payment_Received</th>
+                        <th>Amount_paid</th>
+                        <th>Balance</th>
                         <th>Action</th>
                     </tr>
                 </thead>
