@@ -7,7 +7,7 @@ export function ProductsList(props) {
     const [showButton, setShowButton] = useState(false);
 
     function fetchProduct() {
-        fetch("http://localhost:3000/products")
+        fetch("./../../db.json")
             .then((response) => {
                 if (!response.ok) {
                     throw new Error("response.message");
@@ -26,7 +26,7 @@ export function ProductsList(props) {
     useEffect(() => fetchProduct(), []);
 
     function deleteProduct(id){
-        fetch("http://localhost:3000/products/" + id, {
+        fetch("./../../db.json/products/" + id, {
             method: 'DELETE',
         })
         .then((response) => response.json())
